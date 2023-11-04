@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .smallinput {
+        width: 10%;
+      }
+      .smallin {
+        width: 10%;
+      }
+    </style>
+    <script>
+      function calculate() {
+        var Ax = parseFloat(document.getElementById("one_x1").value);
+        var Ay = parseFloat(document.getElementById("one_y1").value);
+
+        var Bx = parseFloat(document.getElementById("one_x2").value);
+        var By = parseFloat(document.getElementById("one_y2").value);
+
+        var Cx = parseFloat(document.getElementById("one_x3").value);
+        var Cy = parseFloat(document.getElementById("one_y3").value);
+
+        var R = parseFloat(document.getElementById("rad").value);
+
+        var Ox = parseFloat(document.getElementById("one_x").value);
+        var Oy = parseFloat(document.getElementById("one_y").value);
+
+        var R1 = ((Ax - Ox) ** 2 + (Ay - Oy) ** 2) ** (1 / 2);
+        var R2 = ((Bx - Ox) ** 2 + (By - Oy) ** 2) ** (1 / 2);
+        var R3 = ((Cx - Ox) ** 2 + (Cy - Oy) ** 2) ** (1 / 2);
+
+        if (R1 <= R && R2 <= R && R3 <= R) {
+          document.getElementById("res").value = "лежит";
+        } else {
+          document.getElementById("res").value = "не лежит";
+        }
+      }
+
+      function change_num() {
+        var N = parseFloat(document.getElementById("inpnum").value).toString();
+        var F = N[0];
+        var S = N[N.length - 1];
+        if (N.length > 1) {
+          var M = N.substring(1, N.length - 1);
+          document.getElementById("resnum").value = S + M + F;
+        } else {
+          document.getElementById("resnum").value = N;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div align="center">
+      <h1>Задание 1</h1>
+      <h2>Определить, лежит ли данный треугольник внутри окружности</h2>
+      <table>
+        <tr>
+          <label for="triangel">Введите вершины треугольника</label>
+        </tr>
+        <tr>
+          <td><label for="one_x1">Ввод вершины А:</label></td>
+          <td>
+            X<sub>1</sub>:
+            <input id="one_x1" class="smallinput" /> Y<sub>1</sub>:
+            <input id="one_y1" class="smallinput" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="one_x2">Ввод вершины B:</label></td>
+          <td>
+            X<sub>2</sub>:
+            <input id="one_x2" class="smallinput" /> Y<sub>2</sub>:
+            <input id="one_y2" class="smallinput" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="one_x3">Ввод вершины C:</label></td>
+          <td>
+            X<sub>3</sub>:
+            <input id="one_x3" class="smallinput" /> Y<sub>3</sub>:
+            <input id="one_y3" class="smallinput" />
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <label for="triangel">Введите данный окружности</label>
+        </tr>
+        <tr>
+          <td><label for="rad">Ввод радиуса:</label></td>
+          <td>R: <input id="rad" class="smallinput" /></td>
+        </tr>
+        <tr>
+          <td>
+            <label for="one_x">Центра окружности</label>
+          </td>
+          <td>
+            X: <input id="one_x" class="smallinput" /> Y:
+            <input id="one_y" class="smallinput" />
+          </td>
+        </tr>
+      </table>
+      <button onclick="calculate()">Вычисление</button><br />
+
+      <table>
+        <tr>
+          Результат
+        </tr>
+        <tr>
+          <td>
+            <label for="">Треугальник по заданным вершинам - </label
+            ><input
+              style="color: rgb(226, 17, 17)"
+              id="res"
+              class="smallin"
+              disabled
+            />, внутри данной окружности
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div align="center">
+      <h1>Задание 2</h1>
+      <h2>переставить первую и последнюю цифры числа n</h2>
+      <table>
+        <tr>
+          <td><label for="inp">Введите число</label></td>
+          <td><input type="text" id="inpnum" /></td>
+        </tr>
+        <tr>
+          <td><button onclick="change_num()">Вычисление</button></td>
+        </tr>
+        <tr>
+          <td>Результат</td>
+          <td>
+            <input
+              style="color: rgb(17, 62, 226)"
+              type="text"
+              id="resnum"
+              disabled
+            />
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
